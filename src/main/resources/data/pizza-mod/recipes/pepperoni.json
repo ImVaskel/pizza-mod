@@ -1,0 +1,28 @@
+{
+  "type" : "minecraft:crafting_shapeless",
+  "ingredients" :  [
+    {
+      "item" : "pizza-mod:iron_knife"
+    },
+    [
+      {
+        "item" : "minecraft:beef"
+      },
+      {
+        "item" : "minecraft:porkchop"
+      }
+    ]
+  ],
+  "key" : {
+    "K" : {
+      "item" : "pizza-mod:iron_knife"
+    },
+    "M" : {
+      "item" : "minecraft:beef"
+    }
+  },
+  "result" : {
+    "item" : "pizza-mod:pepperoni",
+    "count" : 3
+  }
+}
