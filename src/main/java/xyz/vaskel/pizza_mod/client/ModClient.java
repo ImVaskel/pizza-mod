@@ -8,6 +8,6 @@ import net.fabricmc.api.Environment;
 public class ModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        System.out.println("test");
+
     }
 }

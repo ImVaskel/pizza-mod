@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "id": "pizza-mod",
+  "id": "pizza_mod",
   "version": "${version}",
   "name": "Mod",
   "description": "",
   "authors": [],
   "contact": {},
-  "license": "MIT",
+  "license": "LGPLv3",
   "icon": "assets/mod/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -14,7 +14,7 @@
       "xyz.vaskel.pizza_mod.client.ModClient"
     ],
     "main": [
-      "xyz.vaskel.pizza_mod.Mod"
+      "xyz.vaskel.pizza_mod.PizzaMod"
     ]
   },
   "mixins": [

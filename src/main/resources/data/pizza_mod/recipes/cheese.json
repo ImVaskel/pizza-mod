@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "pizza_mod:milk_bowl"
+  },
+  "result": "pizza_mod:cheese",
+  "experience": 0.5,
+  "cookingtime": 200
+}

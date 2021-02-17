@@ -1,0 +1,11 @@
+{
+  "item.pizza_mod.pepperoni" : "Pepperoni",
+  "item.pizza_mod.pizza" : "Pizza",
+  "item.pizza_mod.iron_knife" : "Iron Knife",
+  "itemGroup.pizza_mod.pizza_group" : "Pizza Mod",
+  "item.pizza_mod.mortar_and_pestle" : "Mortar and Pestle",
+  "item.pizza_mod.milk_bowl" : "Milk Bowl",
+  "item.pizza_mod.wheat_flour" : "Flour",
+  "item.pizza_mod.pizza_dough" : "Pizza Dough",
+  "item.pizza_mod.cheese" : "Cheese"
+}

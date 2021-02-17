@@ -1,0 +1,17 @@
+{
+  "type" : "minecraft:crafting_shaped",
+  "pattern" : [
+    " BS"
+  ],
+  "key" : {
+    "B" : {
+      "item" : "minecraft:bowl"
+    },
+    "S" : {
+      "item" : "minecraft:stick"
+    }
+  },
+  "result" : {
+    "item" : "pizza_mod:mortar_and_pestle"
+  }
+}
