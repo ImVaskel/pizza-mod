@@ -7,10 +7,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import xyz.vaskel.pizza_mod.items.KnifeItem;
-import xyz.vaskel.pizza_mod.items.PepperoniItem;
-import xyz.vaskel.pizza_mod.items.PizzaItem;
-import xyz.vaskel.pizza_mod.items.ReusableItem;
+import xyz.vaskel.pizza_mod.items.*;
 
 import java.util.function.Supplier;
 
@@ -27,6 +24,7 @@ public class PizzaModItems {
     public static final ItemGroup PIZZA_ITEM_GROUP;
     public static final Item MILK_BOWL_ITEM;
     public static final Item WHEAT_FLOUR_ITEM;
+    public static final PineapplePizzaItem PINEAPPLE_PIZZA_ITEM;
 
     static {
         PIZZA_ITEM_GROUP = FabricItemGroupBuilder.build(
@@ -44,7 +42,7 @@ public class PizzaModItems {
                 new Item.Settings().group(PIZZA_ITEM_GROUP));
 
         PIZZA_DOUGH_ITEM = new Item(new FabricItemSettings().group(PIZZA_ITEM_GROUP)
-                .food(new FoodComponent.Builder().hunger(5).saturationModifier(0.4f).build()));
+                .food(new FoodComponent.Builder().hunger(4).saturationModifier(0.4f).build()));
 
         CHEESE_ITEM = new Item(new FabricItemSettings().group(PIZZA_ITEM_GROUP)
                 .food(new FoodComponent.Builder().hunger(2).saturationModifier(0.15f).snack().build()));
@@ -54,6 +52,11 @@ public class PizzaModItems {
         MILK_BOWL_ITEM = new Item(new FabricItemSettings().group(PIZZA_ITEM_GROUP));
 
         WHEAT_FLOUR_ITEM = new Item(new FabricItemSettings().group(PIZZA_ITEM_GROUP));
+
+        PINEAPPLE_PIZZA_ITEM = new PineapplePizzaItem(new FabricItemSettings().group(PIZZA_ITEM_GROUP).food(
+                new FoodComponent.Builder().hunger(9).saturationModifier(0.65F).statusEffect
+                        (new StatusEffectInstance(StatusEffects.POISON, 20*3), 0.50f).build()
+        ));
         }
 
     public static void initialize(){
@@ -65,6 +68,7 @@ public class PizzaModItems {
         Registry.register(Registry.ITEM, new Identifier(modid, "mortar_and_pestle"), MORTAR_PESTLE_ITEM);
         Registry.register(Registry.ITEM, new Identifier(modid, "milk_bowl"), MILK_BOWL_ITEM);
         Registry.register(Registry.ITEM, new Identifier(modid, "wheat_flour"), WHEAT_FLOUR_ITEM);
+        Registry.register(Registry.ITEM, new Identifier(modid, "pineapple_pizza"), PINEAPPLE_PIZZA_ITEM);
     }
 
     public static Supplier<ItemStack> displayGroupIcon(){

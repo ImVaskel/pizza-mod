@@ -7,5 +7,7 @@
   "item.pizza_mod.milk_bowl" : "Milk Bowl",
   "item.pizza_mod.wheat_flour" : "Flour",
   "item.pizza_mod.pizza_dough" : "Pizza Dough",
-  "item.pizza_mod.cheese" : "Cheese"
+  "item.pizza_mod.cheese" : "Cheese",
+  "item.pizza_mod.pineapple_pizza.tooltip" : "This doesn't seem right.",
+  "item.pizza_mod.pineapple_pizza" : "Pineapple Pizza"
 }
