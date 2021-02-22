@@ -7,5 +7,6 @@ public class PizzaMod implements ModInitializer {
     @Override
     public void onInitialize() {
         PizzaModItems.initialize();
+        PizzaModBlocks.initialize();
     }
 }

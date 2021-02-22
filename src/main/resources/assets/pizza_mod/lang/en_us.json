@@ -9,5 +9,7 @@
   "item.pizza_mod.pizza_dough" : "Pizza Dough",
   "item.pizza_mod.cheese" : "Cheese",
   "item.pizza_mod.pineapple_pizza.tooltip" : "This doesn't seem right.",
-  "item.pizza_mod.pineapple_pizza" : "Pineapple Pizza"
+  "item.pizza_mod.pineapple_pizza" : "Pineapple Pizza",
+  "block.pizza_mod.pizza_oven.items" : "The block has: %s and %s",
+  "item.pizza_mod.spoon" : "Spoon"
 }
