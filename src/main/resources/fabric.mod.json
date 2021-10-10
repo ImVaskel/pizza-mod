@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "pizza_mod",
+  "version": "${version}",
+
+  "name": "Pizza Mod",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "Vaskel"
+  ],
+  "contact": {
+    "homepage": "https://vaskel.gay",
+    "sources": "https://github.com/imvaskel/pizza-mod"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/pizza_mod/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "gay.vaskel.pizza_mod.PizzaMod"
+      }
+    ],
+    "client": [
+      {
+        "adapter": "kotlin",
+        "value": "gay.vaskel.pizza_mod.client.PizzaModClient"
+      }
+    ]
+  },
+  "mixins": [
+    "pizza_mod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.8.7",
+    "fabric": "*",
+    "fabric-language-kotlin": "*",
+    "minecraft": "1.17.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  },
+  "accessWidener": "pizza_mod.accesswidener"
+}

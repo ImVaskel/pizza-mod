@@ -1,0 +1,4 @@
+accessWidener	v1	named
+
+extendable    method    net/minecraft/item/Item    getRecipeRemainder    ()Lnet/minecraft/item/Item;
+mutable    field    net/minecraft/item/Item    recipeRemainder    Lnet/minecraft/item/Item;

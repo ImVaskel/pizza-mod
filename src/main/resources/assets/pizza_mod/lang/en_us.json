@@ -1,0 +1,8 @@
+{
+  "item.pizza_mod.iron_knife": "Iron Knife",
+  "block.pizza_mod.butcher_block.progress": "You are at %d progress.",
+  "block.pizza_mod.butcher_block.progress.complete": "You finish cutting.",
+  "block.pizza_mod.butcher_block.nothing": "This butcher block has no meat.",
+  "block.pizza_mod.butcher_block.something": "This butcher block has %d %s.",
+  "block.pizza_mod.butcher_block": "Butcher Block"
+}
