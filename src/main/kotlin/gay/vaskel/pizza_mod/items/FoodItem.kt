@@ -1,6 +1,5 @@
 package gay.vaskel.pizza_mod.items
 
-import gay.vaskel.pizza_mod.PizzaModItems
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.minecraft.item.FoodComponent
 import net.minecraft.item.Item

@@ -1,6 +1,5 @@
-package gay.vaskel.pizza_mod.blocks
+package gay.vaskel.pizza_mod.blockentities
 
-import gay.vaskel.pizza_mod.PizzaModBlocks
 import gay.vaskel.pizza_mod.utils.ImplementedInventory
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable
 import net.minecraft.block.BlockState
@@ -8,12 +7,11 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.inventory.Inventories
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
-import net.minecraft.nbt.NbtList
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.util.math.BlockPos
 
 
-class ButcherBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(PizzaModBlocks.BUTCHER_BLOCK_ENTITY, pos, state), ImplementedInventory,
+class ButcherBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(PizzaModBlockEntities.BUTCHER_BLOCK_ENTITY, pos, state), ImplementedInventory,
         BlockEntityClientSerializable
 {
     override var items: DefaultedList<ItemStack> = DefaultedList.ofSize(1, ItemStack.EMPTY)

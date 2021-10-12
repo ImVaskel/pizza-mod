@@ -1,6 +1,6 @@
 package gay.vaskel.pizza_mod.client.renderers
 
-import gay.vaskel.pizza_mod.blocks.ButcherBlockEntity
+import gay.vaskel.pizza_mod.blockentities.ButcherBlockEntity
 import net.minecraft.client.MinecraftClient
 import net.minecraft.client.render.VertexConsumerProvider
 import net.minecraft.client.render.block.entity.BlockEntityRenderer

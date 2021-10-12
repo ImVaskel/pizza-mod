@@ -1,5 +1,6 @@
 package gay.vaskel.pizza_mod.blocks
 
+import gay.vaskel.pizza_mod.blockentities.MilkCauldronBlockEntity
 import gay.vaskel.pizza_mod.fluids.MilkFluid
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext
@@ -11,7 +12,6 @@ import net.minecraft.block.BlockState
 import net.minecraft.block.Material
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.player.PlayerEntity
-import net.minecraft.item.Items
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand

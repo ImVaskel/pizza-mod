@@ -1,6 +1,7 @@
 package gay.vaskel.pizza_mod.blocks
 
-import gay.vaskel.pizza_mod.PizzaModItems
+import gay.vaskel.pizza_mod.items.PizzaModItems
+import gay.vaskel.pizza_mod.blockentities.ButcherBlockEntity
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.block.Block
 import net.minecraft.block.BlockEntityProvider
