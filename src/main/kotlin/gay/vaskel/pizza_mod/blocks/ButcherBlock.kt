@@ -8,13 +8,10 @@ import net.minecraft.block.BlockState
 import net.minecraft.block.Material
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.entity.EquipmentSlot
-import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.inventory.Inventory
-import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
-import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.text.TranslatableText
 import net.minecraft.util.ActionResult
 import net.minecraft.util.Hand
@@ -22,7 +19,6 @@ import net.minecraft.util.ItemScatterer
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import java.util.function.Consumer
 
 
 class ButcherBlock: Block(FabricBlockSettings.of(Material.WOOD).strength(2.0f).nonOpaque()), BlockEntityProvider {
@@ -58,12 +54,8 @@ class ButcherBlock: Block(FabricBlockSettings.of(Material.WOOD).strength(2.0f).n
 
                 if (entity.progress + progress >= 100) {
                     entity.progress = 0
-                    if (item.count - 1 == 0) {
-                        entity.setStack(0, ItemStack.EMPTY)
-                    }
-                    else {
-                        item.count -= 1
-                    }
+                    item.count -= 1
+
                     entity.sync()
 
                     stack.damage(1, player) { e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND) }

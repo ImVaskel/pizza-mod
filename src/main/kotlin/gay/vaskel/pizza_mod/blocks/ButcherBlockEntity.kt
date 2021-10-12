@@ -8,6 +8,7 @@ import net.minecraft.block.entity.BlockEntity
 import net.minecraft.inventory.Inventories
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
+import net.minecraft.nbt.NbtList
 import net.minecraft.util.collection.DefaultedList
 import net.minecraft.util.math.BlockPos
 
@@ -30,15 +31,16 @@ class ButcherBlockEntity(pos: BlockPos, state: BlockState) : BlockEntity(PizzaMo
         return super.writeNbt(nbt)
     }
 
-    override fun markDirty() {
-
-    }
-
     override fun fromClientTag(tag: NbtCompound) {
+        items.clear()
         readNbt(tag)
     }
 
     override fun toClientTag(tag: NbtCompound): NbtCompound {
         return writeNbt(tag)
+    }
+
+    override fun markDirty() {
+
     }
 }

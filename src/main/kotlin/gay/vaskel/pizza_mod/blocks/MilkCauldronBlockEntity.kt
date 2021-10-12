@@ -2,31 +2,47 @@ package gay.vaskel.pizza_mod.blocks
 
 import gay.vaskel.pizza_mod.PizzaModBlocks
 import gay.vaskel.pizza_mod.PizzaModFluids
+import gay.vaskel.pizza_mod.fluids.MilkFluid
 import net.fabricmc.fabric.api.block.entity.BlockEntityClientSerializable
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant
 import net.fabricmc.fabric.api.transfer.v1.storage.Storage
+import net.fabricmc.fabric.api.transfer.v1.storage.StoragePreconditions
 import net.fabricmc.fabric.api.transfer.v1.storage.StorageView
+import net.fabricmc.fabric.api.transfer.v1.storage.base.ResourceAmount
+import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleViewIterator
 import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext
+import net.fabricmc.fabric.api.transfer.v1.transaction.base.SnapshotParticipant
+import net.fabricmc.fabric.impl.transfer.fluid.FluidVariantCache
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
-import net.minecraft.fluid.Fluid
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.util.math.BlockPos
 
+
+@Suppress("DEPRECATION")
 class MilkCauldronBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(PizzaModBlocks.MILK_CAULDRON_ENTITY, pos, state), BlockEntityClientSerializable,
-    Storage<FluidVariant>
-{
-    lateinit var milk: FluidVariant
+    StorageView<FluidVariant>, Storage<FluidVariant> {
+
+    companion object {
+        const val CAPACITY = FluidConstants.BLOCK * 4
+    }
+
+    var fluid: FluidVariant = FluidVariant.of(PizzaModFluids.STILL_MILK)
+    var amt: Long = 0
 
     override fun readNbt(nbt: NbtCompound) {
         super.readNbt(nbt)
+        this.amt = nbt.getLong("amt")
     }
 
     override fun writeNbt(nbt: NbtCompound): NbtCompound {
+        nbt.putLong("amt", amt)
         return super.writeNbt(nbt)
     }
 
     override fun fromClientTag(tag: NbtCompound) {
+        this.amt = 0
         readNbt(tag)
     }
 
@@ -34,15 +50,62 @@ class MilkCauldronBlockEntity(pos: BlockPos, state: BlockState): BlockEntity(Piz
         return writeNbt(tag)
     }
 
+    override fun isResourceBlank(): Boolean {
+        return fluid.isBlank
+    }
+
+    override fun getResource(): FluidVariant {
+        return fluid
+    }
+
+    override fun getAmount(): Long {
+        return this.amt
+    }
+
+    override fun getCapacity(): Long {
+        return CAPACITY
+    }
+
     override fun insert(resource: FluidVariant, maxAmount: Long, transaction: TransactionContext): Long {
-        TODO("Not yet implemented")
+        StoragePreconditions.notBlankNotNegative(resource, CAPACITY)
+
+        if (resource.fluid is MilkFluid) {
+            val inserted: Long = maxAmount.coerceAtMost(CAPACITY - amount)
+            if (inserted > 0) {
+                amt += inserted
+            }
+            return inserted
+        }
+        return 0
     }
 
     override fun extract(resource: FluidVariant, maxAmount: Long, transaction: TransactionContext): Long {
-        TODO("Not yet implemented")
+        StoragePreconditions.notBlankNotNegative(resource, maxAmount)
+        if(resource.fluid is MilkFluid) {
+            val extracted: Long = maxAmount.coerceAtMost(amount)
+            if (extracted > 0) {
+                amt -= extracted
+            }
+            return extracted
+        }
+        return 0
     }
 
     override fun iterator(transaction: TransactionContext): MutableIterator<StorageView<FluidVariant>> {
-        TODO("Not yet implemented")
+        return SingleViewIterator.create(this, transaction);
+    }
+
+    private class ResourceParticipant : SnapshotParticipant<ResourceAmount<FluidVariant>>() {
+        override fun createSnapshot(): ResourceAmount<FluidVariant> {
+            return ResourceAmount(resource, amount)
+        }
+
+        override fun readSnapshot(snapshot: ResourceAmount<FluidVariant>) {
+            amt = snapshot.amount
+        }
+
+        override fun onFinalCommit() {
+            onChanged()
+        }
     }
 }
